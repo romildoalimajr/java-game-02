@@ -1,0 +1,6 @@
+1.  Player (move em todas a direções)
+2.  Sistema de vida
+3.  Efeitos sonoros
+4.  A* nos inimigos
+5.  Modo fantasma nos inimigos
+6.  Ganhar moedas e vidas
