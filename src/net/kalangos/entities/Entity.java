@@ -15,6 +15,11 @@ import net.kalangos.world.World;
 
 public class Entity {
 	
+	public static BufferedImage APPLE_SPRITE = Game.spritesheet.getSprite(0, 48, 16, 16);
+	public static BufferedImage ENEMY1 = Game.spritesheet.getSprite(16, 16, 16, 16);
+	public static BufferedImage ENEMY2 = Game.spritesheet.getSprite(0, 32, 16, 16);
+	public static BufferedImage ENEMY3 = Game.spritesheet.getSprite(16, 32, 16, 16);
+	public static BufferedImage ENEMY_GHOST = Game.spritesheet.getSprite(0, 16, 16, 16);
 
 	protected double x;
 	protected double y;

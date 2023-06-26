@@ -6,6 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import net.kalangos.entities.Apples;
+import net.kalangos.entities.Enemy;
+import net.kalangos.entities.Entity;
+import net.kalangos.entities.Player;
 import net.kalangos.main.Game;
 
 public class World {
@@ -38,8 +42,27 @@ public class World {
 						Game.player.setX(xx*16);
 						Game.player.setY(yy*16);
 					}else if(pixelAtual == 0xFFFF0000) {
-						//Instanciar inimigo e adicionar a lista das entities
+						//Apples
+						Apples apple = new Apples(xx*16, yy*16, 16, 16, 0, Entity.APPLE_SPRITE);
+						Game.entities.add(apple);
+						Game.countFruits++;
+					}else if(pixelAtual == 0xFF00FF21) {
+						//enemy 01
+						Enemy enemy = new Enemy(xx*16, yy*16, 16, 16, 2, Entity.ENEMY1);
+						Game.entities.add(enemy);
+					
+					}else if(pixelAtual == 0xFFFF0FF3) {
+						//enemy 02
+						Enemy enemy = new Enemy(xx*16, yy*16, 16, 16, 2, Entity.ENEMY2);
+						Game.entities.add(enemy);
+					
+					}else if(pixelAtual == 0xFF00FFFF) {
+						//enemy 03
+						Enemy enemy = new Enemy(xx*16, yy*16, 16, 16, 2, Entity.ENEMY3);
+						Game.entities.add(enemy);
+					
 					}
+					
 				}
 			}
 		} catch (IOException e) {
@@ -67,8 +90,13 @@ public class World {
 				(tiles[x4 + (y4*World.WIDTH)] instanceof WallTile));
 	}
 	
-	public static void restartGame(String level){
-		new Game();
+	public static void restartGame(){
+		Game.player = new Player(0,0,16,16,2,Game.spritesheet.getSprite(32,0,16,16));
+		Game.entities.clear();
+		Game.entities.add(Game.player);
+		Game.atualFruits = 0;
+		Game.countFruits  = 0;
+		Game.world = new World("/map01.png");
 		return;
 	}
 	
